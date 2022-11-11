@@ -50,8 +50,8 @@ public class ConnectorTest {
         System.out.println(">>>>>> 用户名：" + userName);
         System.out.println(">>>>>> 密码：" + password);
         System.out.println(">>>>>> 连接超时时间：" + connectTimeout + "毫秒");
-        System.out.println(">>>>>> 驱动包地址：" + driverPath);
-        System.out.println(">>>>>> 驱动类地址：" + driverClassName);
+        System.out.println(">>>>>> 驱动地址：" + driverPath);
+        System.out.println(">>>>>> 驱动类名称：" + driverClassName);
         System.out.println("####################");
         OracleConnectionInfo connectionInfo = new OracleConnectionInfo();
         connectionInfo.setHost(host);

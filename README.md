@@ -23,5 +23,5 @@
 *user_name* : 用户名<br>
 *password* : 密码<br>
 *connect_timeout* : 连接超时时间（毫秒）<br>
-*driver_path* : 驱动包地址<br>
-*driver_classname* : 驱动类地址<br>
+*driver_path* : 驱动地址<br>
+*driver_classname* : 驱动类名称<br>
