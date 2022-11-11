@@ -1,12 +1,14 @@
 package org.edward.datacat.model;
 
+import java.util.List;
+
 public class ConnectionInfo {
     private String host;
     private int port;
     private String userName;
     private String password;
     private long connectTimeout;
-    private String driverPath;
+    private List<String> driverPathList;
     private String driverClassName;
 
     public String getHost() {
@@ -39,11 +41,11 @@ public class ConnectionInfo {
     public void setConnectTimeout(long connectTimeout) {
         this.connectTimeout = connectTimeout;
     }
-    public String getDriverPath() {
-        return driverPath;
+    public List<String> getDriverPathList() {
+        return driverPathList;
     }
-    public void setDriverPath(String driverPath) {
-        this.driverPath = driverPath;
+    public void setDriverPathList(List<String> driverPathList) {
+        this.driverPathList = driverPathList;
     }
     public String getDriverClassName() {
         return driverClassName;

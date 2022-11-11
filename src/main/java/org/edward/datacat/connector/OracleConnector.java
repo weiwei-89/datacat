@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.sql.Connection;
 import java.sql.Driver;
+import java.util.List;
 import java.util.Properties;
 
 public class OracleConnector implements DatabaseConnector<OracleConnectionInfo> {
@@ -22,8 +23,12 @@ public class OracleConnector implements DatabaseConnector<OracleConnectionInfo> 
         connectionProperties.setProperty("user", userName);
         connectionProperties.setProperty("password", connectionInfo.getPassword());
         connectionProperties.setProperty("connectTimeout", String.valueOf(connectionInfo.getConnectTimeout()));
-        URL driverPath = new URL("file:///"+connectionInfo.getDriverPath());
-        URLClassLoader driverClassLoder = new URLClassLoader(new URL[]{driverPath});
+        List<String> driverPathList = connectionInfo.getDriverPathList();
+        URL[] driverPathArray = new URL[driverPathList.size()];
+        for(int i=0; i<driverPathList.size(); i++) {
+            driverPathArray[i] = new URL("file:///"+driverPathList.get(i));
+        }
+        URLClassLoader driverClassLoder = new URLClassLoader(driverPathArray);
         Class<?> driverClass = driverClassLoder.loadClass(connectionInfo.getDriverClassName());
         Driver driver = (Driver) driverClass.newInstance();
         return driver.connect("jdbc:oracle:thin:@//"+connectionInfo.getHost()+":"+connectionInfo.getPort()+"/"+connectionInfo.getServiceName(), connectionProperties);
